@@ -1,0 +1,37 @@
+
+---
+
+## 🛠️ Prerequisites
+
+- Python 3.x installed  
+- `Flask` library  
+- `requests` library  
+- Internet connection (to fetch weather data)
+
+You can install the required Python packages using:
+
+```bash
+pip install flask requests
+
+🎨 Frontend
+The HTML template is located in templates/index.html.
+
+Styles are in static/styles.css.
+
+Make sure the templates and static folders are correctly placed in the project root.
+
+Place the app.py file in the main (root) project folder alongside the templates and static directories for Flask to locate the files correctly.
+
+⚙️ How to Run Locally
+Clone the repository or download the project files.
+
+Run the Flask app:
+python app.py
+
+The terminal will show a local URL (usually http://127.0.0.1:5000/).
+
+Open the URL in your web browser to access the Weather Dashboard.
+
+Enter a city and optionally a country to fetch the current weather.
+
+
