@@ -19,10 +19,12 @@ A sleek and responsive **web application** built with **HTML**, **CSS**, and **P
 
 ## 💻 Project Structure
 
-weather-dashboard/
-│
-├── app.py # Main Flask application (Python)
-├── templates/
-│ └── index.html # HTML template for the dashboard
-├── static/
-│ └── styles.css # CSS stylesheet for styling
+weather-dashboard:
+
+app.py # Main Flask application (Python)
+
+templates/
+└── index.html # HTML template for the dashboard
+
+static/
+└── styles.css # CSS stylesheet for styling
