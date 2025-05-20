@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="overlay">
+
+        <header>
+            <h1>SKYCAST</h1>
+        </header>
+
+        <main class="layout">
+            <!-- Left Side: Form + Weather Info -->
+            <div class="left-column">
+                <form method="POST" class="search-form">
+                    <input type="text" name="location" placeholder="Enter city" required>
+                    <input type="text" name="country" value="India" placeholder="Enter country (default: India)">
+                    <button type="submit">Get Weather</button>
+                </form>
+
+                {% if weather %}
+                {% if weather.error %}
+                <div class="error">{{ weather.error }}</div>
+                {% else %}
+                <div class="weather-card">
+                    <div class="weather-header">
+                        <h2>Weather in {{ location }}, {{ country }}</h2>
+                        {% if weather.icon %}
+                        <img src="{{ weather.icon }}" alt="Weather Icon" class="weather-icon">
+                        {% endif %}
+                    </div>
+                    <div class="weather-detail"><strong>Temperature:</strong> {{ weather.temperature }}</div>
+                    <div class="weather-detail"><strong>Feels Like:</strong> {{ weather.feels_like }}</div>
+                    <div class="weather-detail"><strong>Condition:</strong> {{ weather.description }}</div>
+                    <div class="weather-detail"><strong>Humidity:</strong> {{ weather.humidity }}</div>
+                    <div class="weather-detail"><strong>Wind:</strong> {{ weather.wind }}</div>
+                    <div class="weather-detail"><strong>Pressure:</strong> {{ weather.pressure }}</div>
+                    <div class="weather-detail"><strong>Visibility:</strong> {{ weather.visibility }}</div>
+                    <div class="weather-detail"><strong>Sunrise:</strong> {{ weather.sunrise }}</div>
+                    <div class="weather-detail"><strong>Sunset:</strong> {{ weather.sunset }}</div>
+                    <div class="weather-detail"><strong>Last Updated:</strong> {{ weather.updated }}</div>
+                </div>
+                {% endif %}
+                {% endif %}
+            </div>
+
+
+            <!-- Right Sidebar -->
+            <div class="right-sidebar">
+
+                <!-- Weather News Section -->
+                <section class="weather-news">
+                    <h3>🌩️ Weather Headlines (India)</h3>
+                    <ul>
+                        <li>Dust storm alert in Rajasthan and Haryana today</li>
+                        <li>Monsoon expected to arrive early in Kerala</li>
+                        <li>High temperatures recorded in central India</li>
+                        <li>Rain forecast for parts of West Bengal and Assam</li>
+                        <li>Heatwave warning issued for Delhi-NCR</li>
+                        <li>Cloudy skies in Mumbai, possible drizzle</li>
+                        <li>Jammu & Kashmir may see fresh snowfall in upper reaches</li>
+                    </ul>
+                </section>
+
+
+
+                <!-- Trivia Section -->
+                <section class="weather-trivia">
+                    <h3>📅 On This Day - 22 April</h3>
+                    <ul>
+                        <li>In 2010, Delhi recorded its highest April temperature at 45.6°C.</li>
+                        <li>World Earth Day 🌍 is celebrated today to promote environmental awareness.</li>
+                        <li>Cherrapunji once received over 1,000mm rain in a single day this week in 1974.</li>
+                    </ul>
+                </section>
+
+                <!-- Satellite Image Section -->
+                <section class="satellite-image">
+                    <h3>🛰️ Live Satellite View</h3>
+                    <img src="https://visibleearth.nasa.gov/images/57747/india-true-color-satellite-image"
+                        alt="Satellite View of India" width="100%" style="border-radius: 8px;">
+                    <p style="font-size: 0.85em;">Image source: NASA / Visible Earth</p>
+                </section>
+
+
+                <!-- Quiz Section -->
+                <section class="weather-quiz">
+                    <h3>❓ Weather Quiz</h3>
+
+                    <div class="quiz-question">
+                        <p><strong>1. Which Indian city receives the highest annual rainfall?</strong></p>
+                        <ul>
+                            <li onclick="showResponse()">a) Mawsynram</li>
+                            <li onclick="showResponse()">b) Cherrapunji</li>
+                            <li onclick="showResponse()">c) Mumbai</li>
+                            <li onclick="showResponse()">d) Kochi</li>
+                        </ul>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p><strong>2. What is the hottest recorded temperature in India?</strong></p>
+                        <ul>
+                            <li onclick="showResponse()">a) 47.5°C</li>
+                            <li onclick="showResponse()">b) 51°C</li>
+                            <li onclick="showResponse()">c) 49.9°C</li>
+                            <li onclick="showResponse()">d) 50.6°C</li>
+                        </ul>
+                    </div>
+
+                    <div class="quiz-question">
+                        <p><strong>3. Which month does the monsoon typically arrive in Kerala?</strong></p>
+                        <ul>
+                            <li onclick="showResponse()">a) April</li>
+                            <li onclick="showResponse()">b) May</li>
+                            <li onclick="showResponse()">c) June</li>
+                            <li onclick="showResponse()">d) July</li>
+                        </ul>
+                    </div>
+
+                    <p class="quiz-response" id="quiz-response" style="display:none;">
+                        ✅ Your response has been recorded. Results will be revealed at the end of the day!
+                    </p>
+                </section>
+
+                <!-- User Submissions Section -->
+                <section class="user-reports">
+                    <h3>🗣️ User Reports</h3>
+                    <ul>
+                        <li>"It’s super windy in Jaipur today!" – Arjun</li>
+                        <li>"Raining lightly in Bhopal ☔" – Aanya</li>
+                        <li>"It’s unusually humid in Kolkata 🥵" – Dev</li>
+                        <li>"Pleasant evening in Bengaluru 🌇" – Navya</li>
+                    </ul>
+                </section>
+
+            </div>
+
+            <!-- JS at bottom of body -->
+            <script>
+                function showResponse() {
+                    document.getElementById('quiz-response').style.display = 'block';
+                }
+            </script>
+
+        </main>
+    </div>
+</body>
+
+</html>
